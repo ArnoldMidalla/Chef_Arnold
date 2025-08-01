@@ -12,6 +12,7 @@ export default function Main() {
   //   "ground beef",
   //   "tomato paste",
   // ]);
+
   const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState(false);
 
@@ -29,16 +30,21 @@ export default function Main() {
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
 
+  function resetIngredients() {
+    setIngredients([]);
+  }
+
   return (
     <main>
       <form action={addIngredient} className="add-ingredient-form">
         <input
           type="text"
-          placeholder="e.g. oregano"
+          placeholder="type an ingredient"
           aria-label="Add ingredient"
           name="ingredient"
         />
         <button>Add ingredient</button>
+        <button onClick={resetIngredients}>Reset Ingredients List</button>
       </form>
 
       {ingredients.length > 0 ? <IngredientsList ingredientsListItems={ingredientsListItems} getRecipe={getRecipe} ingredients={ingredients}/> : <h2>Not enough ingredients added</h2>}

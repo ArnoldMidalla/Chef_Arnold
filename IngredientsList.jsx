@@ -5,11 +5,11 @@ export default function IngredientsList({
 }) {
   return (
     <section>
-      <h2>Ingredients on hand:</h2>
-      <ul className="ingredients-list" aria-live="polite">
+      {ingredients.length > 0 ? <h2>Ingredients on hand:</h2> : null}
+      <ul className="ingredients-list">
         {ingredientsListItems}
       </ul>
-      {ingredients.length > 3 && (
+      {ingredients.length > 3 ? (
         <div className="get-recipe-container">
           <div>
             <h3>Ready for a recipe?</h3>
@@ -17,7 +17,7 @@ export default function IngredientsList({
           </div>
           <button onClick={getRecipe}>Get a recipe</button>
         </div>
-      )}
+      ) : null}
     </section>
   );
 }

@@ -2,15 +2,17 @@ import React from "react";
 import ClaudeRecipe from "./ClaudeRecipe.jsx";
 import IngredientsList from "./ingredientsList.jsx";
 import { getRecipeFromGemini } from "./ai.js";
+import { h2 } from "framer-motion/client";
 
 export default function Main() {
 
-  const [ingredients, setIngredients] = React.useState([
-    "all the main spices",
-    "pasta",
-    "ground beef",
-    "tomato paste",
-  ]);
+  // const [ingredients, setIngredients] = React.useState([
+  //   "all the main spices",
+  //   "pasta",
+  //   "ground beef",
+  //   "tomato paste",
+  // ]);
+  const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState(false);
 
   async function getRecipe() {
@@ -39,8 +41,8 @@ export default function Main() {
         <button>Add ingredient</button>
       </form>
 
-      {ingredients.length > 0 && <IngredientsList ingredientsListItems={ingredientsListItems} getRecipe={getRecipe} ingredients={ingredients}/>}
-      {recipe && <ClaudeRecipe recipe={recipe} />}
+      {ingredients.length > 0 ? <IngredientsList ingredientsListItems={ingredientsListItems} getRecipe={getRecipe} ingredients={ingredients}/> : <h2>Not enough ingredients added</h2>}
+      {recipe ? <ClaudeRecipe recipe={recipe}/> : null}
     </main>
   );
 }

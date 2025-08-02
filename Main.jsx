@@ -47,7 +47,7 @@ export default function Main() {
         <button onClick={resetIngredients}>Reset Ingredients List</button>
       </form>
 
-      {ingredients.length > 0 ? <IngredientsList ingredientsListItems={ingredientsListItems} getRecipe={getRecipe} ingredients={ingredients}/> : <h2>Not enough ingredients added</h2>}
+      {ingredients.length > 0 ? <IngredientsList ingredientsListItems={ingredientsListItems} getRecipe={getRecipe} ingredients={ingredients}/> : null}
       {recipe ? <ClaudeRecipe recipe={recipe}/> : null}
     </main>
   );

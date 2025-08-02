@@ -45,7 +45,7 @@ main {
   border-radius: 6px;
   border: 1px solid #d1d5db;
   padding: 9px 13px;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); */
   flex-grow: 1;
   min-width: 150px;
   max-width: 400px;
@@ -102,7 +102,7 @@ ul.ingredients-list > li {
   border: none;
   border-radius: 6px;
   background: #d17557;
-  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05); */
   color: #fafaf8;
   padding: 9px 17px;
   font-family: "DM Sans", Inter, sans-serif;

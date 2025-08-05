@@ -1,11 +1,10 @@
 import React from "react";
-import ClaudeRecipe from "./ClaudeRecipe.jsx";
-import IngredientsList from "./ingredientsList.jsx";
+import ClaudeRecipe from "./components/ClaudeRecipe.jsx";
+import IngredientsList from "./components/ingredientsList.jsx";
 import { getRecipeFromGemini } from "./ai.js";
 import { h2 } from "framer-motion/client";
 
 export default function Main() {
-
   // const [ingredients, setIngredients] = React.useState([
   //   "all the main spices",
   //   "pasta",
@@ -18,7 +17,7 @@ export default function Main() {
 
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromGemini(ingredients);
-    setRecipe(recipeMarkdown)
+    setRecipe(recipeMarkdown);
   }
 
   const ingredientsListItems = ingredients.map((ingredient) => (
@@ -47,8 +46,14 @@ export default function Main() {
         <button onClick={resetIngredients}>Reset Ingredients List</button>
       </form>
 
-      {ingredients.length > 0 ? <IngredientsList ingredientsListItems={ingredientsListItems} getRecipe={getRecipe} ingredients={ingredients}/> : null}
-      {recipe ? <ClaudeRecipe recipe={recipe}/> : null}
+      {ingredients.length > 0 ? (
+        <IngredientsList
+          ingredientsListItems={ingredientsListItems}
+          getRecipe={getRecipe}
+          ingredients={ingredients}
+        />
+      ) : null}
+      {recipe ? <ClaudeRecipe recipe={recipe} /> : null}
     </main>
   );
 }

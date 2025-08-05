@@ -2,6 +2,7 @@ export default function IngredientsList({
   ingredientsListItems,
   getRecipe,
   ingredients,
+  ref
 }) {
   return (
     <section>
@@ -11,7 +12,7 @@ export default function IngredientsList({
       </ul>
       {ingredients.length > 3 ? (
         <div className="get-recipe-container">
-          <div>
+          <div ref={ref}>
             <h3>Ready for a recipe?</h3>
             <p>Generate a recipe from your list of ingredients.</p>
           </div>

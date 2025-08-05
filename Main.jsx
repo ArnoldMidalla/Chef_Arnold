@@ -5,15 +5,23 @@ import { getRecipeFromGemini } from "./ai.js";
 import { h2 } from "framer-motion/client";
 
 export default function Main() {
-  // const [ingredients, setIngredients] = React.useState([
-  //   "all the main spices",
-  //   "pasta",
-  //   "ground beef",
-  //   "tomato paste",
-  // ]);
+  const [ingredients, setIngredients] = React.useState([
+    "all the main spices",
+    "pasta",
+    "ground beef",
+    "tomato paste",
+  ]);
 
-  const [ingredients, setIngredients] = React.useState([]);
+  // const [ingredients, setIngredients] = React.useState([]);
   const [recipe, setRecipe] = React.useState(false);
+
+  const recipeSection = React.useRef(null);
+
+  React.useEffect(() => {
+    if (recipe !== "" && recipeSection.current !== null) {
+      recipeSection.current.scrollIntoView();
+    }
+  }, [recipe]);
 
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromGemini(ingredients);
@@ -48,6 +56,7 @@ export default function Main() {
 
       {ingredients.length > 0 ? (
         <IngredientsList
+          ref={recipeSection}
           ingredientsListItems={ingredientsListItems}
           getRecipe={getRecipe}
           ingredients={ingredients}

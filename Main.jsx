@@ -40,7 +40,12 @@ export default function Main() {
 
   function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
-    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    // newIngredient == "" ? null : setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    if (newIngredient == " ") {
+      null
+    } else {
+      setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+    }
   }
 
   function resetIngredients() {
